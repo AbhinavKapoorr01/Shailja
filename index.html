@@ -1,0 +1,293 @@
+<!DOCTYPE html><html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Shailja ❤️</title><style>
+*{
+  margin:0; padding:0; box-sizing:border-box;
+  font-family:'Segoe UI',sans-serif;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body{
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background:black;
+  overflow:hidden;
+  color:white;
+}
+
+/* 🌌 LIGHT STARFIELD */
+.stars{ position:fixed; inset:0; z-index:0; }
+
+.star{
+  position:absolute;
+  width:2px;
+  height:2px;
+  background:white;
+  opacity:0.7;
+  animation: twinkle 3s infinite alternate;
+}
+
+@keyframes twinkle{ from{opacity:0.2;} to{opacity:0.9;} }
+
+/* 🎬 INTRO */
+.intro{
+  position:fixed;
+  inset:0;
+  background:black;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  z-index:10;
+  animation: fadeOut 1.8s ease 1.5s forwards;
+}
+
+.intro h1{
+  font-size:26px;
+  letter-spacing:2px;
+  color:#ff2e63;
+  animation: softGlow 2s infinite alternate;
+}
+
+@keyframes softGlow{ from{opacity:0.6;} to{opacity:1;} }
+@keyframes fadeOut{ to{opacity:0; visibility:hidden;} }
+
+/* 💎 CARD */
+.container{
+  width:92%;
+  max-width:420px;
+  background:rgba(255,255,255,0.06);
+  border-radius:22px;
+  padding:32px 22px;
+  text-align:center;
+  box-shadow:0 10px 25px rgba(0,0,0,0.35);
+  animation:fadeIn 0.5s ease;
+  z-index:2;
+}
+
+h1{
+  font-size:clamp(22px,5vw,28px);
+  margin-bottom:10px;
+  color:#ff2e63;
+}
+
+p{
+  font-size:15px;
+  margin:18px 0 25px;
+  min-height:24px;
+  opacity:0.85;
+}
+
+.buttons{ display:flex; gap:10px; }
+
+button{
+  flex:1;
+  border:none;
+  padding:12px;
+  border-radius:18px;
+  font-size:15px;
+  cursor:pointer;
+  transition: transform 0.15s ease;
+}
+
+button:active{ transform:scale(0.96); }
+
+.yes{ background:#ff2e63; color:white; }
+
+.no{
+  background:transparent;
+  color:#ff9a9e;
+  border:1px solid rgba(255,255,255,0.25);
+}
+
+/* 💖 CUTE SURPRISE POPUP */
+.cute-popup{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,0.85);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  z-index:20;
+  animation:fadeIn 0.3s ease;
+}
+
+.popup-box{
+  background:#1a1a1a;
+  padding:30px 25px;
+  border-radius:20px;
+  text-align:center;
+  animation:popSmooth 0.3s ease;
+}
+
+.popup-box h2{
+  color:#ff2e63;
+  margin-bottom:10px;
+}
+
+.popup-box p{
+  font-size:16px;
+  margin-bottom:15px;
+}
+
+/* 💖 CELEBRATION */
+.celebration{
+  position:fixed;
+  inset:0;
+  background:black;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  padding:20px;
+  animation:fadeIn 0.4s ease;
+  z-index:5;
+}
+
+.card{
+  width:100%;
+  max-width:420px;
+  background:rgba(255,255,255,0.08);
+  border-radius:22px;
+  padding:28px 20px;
+  text-align:center;
+  animation:popSmooth 0.35s ease;
+}
+
+.names{
+  margin:10px 0 15px;
+  font-weight:bold;
+  color:#ffd6e0;
+}
+
+.share-btn{
+  margin-top:10px;
+  width:100%;
+  background:#ff2e63;
+  color:white;
+  border-radius:18px;
+}
+
+img{
+  width:100%;
+  margin-top:12px;
+  border-radius:16px;
+}
+
+@keyframes fadeIn{
+  from{opacity:0; transform:translateY(6px);} 
+  to{opacity:1; transform:translateY(0);} 
+}
+
+@keyframes popSmooth{
+  from{transform:scale(0.95);} 
+  to{transform:scale(1);} 
+}
+</style></head>
+<body><div class="stars" id="stars"></div><div class="intro">
+  <h1>A Special Question ❤️</h1>
+</div><div class="container" id="proposal">
+  <h1>Shailja, Will You Be Mine? ❤️</h1>
+  <p id="teaseText">You are my favorite coincidence ✨</p>  <div class="buttons">
+    <button class="yes" onclick="cuteSurprise()">Yes 💖</button>
+    <button class="no" id="noBtn" onclick="moveNo(); tease();">No 😜</button>
+  </div>
+</div><script>
+const noBtn = document.getElementById('noBtn');
+const teaseText = document.getElementById('teaseText');
+
+const teaseMessages = [
+  "Are you sure? 😌",
+  "Think again 😏",
+  "No button nervous 😜",
+  "Destiny says YES 💖"
+];
+
+function moveNo(){
+  const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
+  const y = Math.random() * (window.innerHeight - noBtn.offsetHeight);
+  noBtn.style.position='fixed';
+  noBtn.style.left=x+'px';
+  noBtn.style.top=y+'px';
+}
+
+function tease(){
+  teaseText.innerText = teaseMessages[Math.floor(Math.random()*teaseMessages.length)];
+}
+
+/* 💖 Cute Surprise Before Celebration */
+function cuteSurprise(){
+  document.body.innerHTML += `
+    <div class="cute-popup">
+      <div class="popup-box">
+        <h2>Waitttt 🥺💖</h2>
+        <p>You just made my heart do happy dance 😭❤️</p>
+        <button class="share-btn" onclick="acceptLove()">Continue 😌</button>
+      </div>
+    </div>`;
+}
+
+function acceptLove(){
+  document.body.innerHTML = `
+    <div class="celebration">
+      <div class="card">
+        <h2>💖 She Said YES 💖</h2>
+        <div class="names">Abhinav ❤️ Shailja</div>
+        <p>Forever officially begins ✨</p>
+
+        <img src="https://images.unsplash.com/photo-1518199266791-5375a83190b7" />
+
+        <button class="share-btn" onclick="generateImage()">Share with Abhinav 💖</button>
+
+        <div id="imageBox"></div>
+      </div>
+    </div>`;
+}
+
+function generateImage(){
+  const box=document.getElementById('imageBox');
+  box.innerHTML="";
+
+  const canvas=document.createElement('canvas');
+  canvas.width=300; canvas.height=300;
+  const ctx=canvas.getContext('2d');
+
+  ctx.fillStyle='#fff';
+  ctx.fillRect(0,0,300,300);
+  ctx.fillStyle='#ff2e63';
+  ctx.font='bold 22px Segoe UI';
+  ctx.textAlign='center';
+  ctx.fillText('She Said YES 💖',150,90);
+  ctx.fillText('Abhinav ❤️ Shailja',150,150);
+
+  const url=canvas.toDataURL();
+
+  const img=document.createElement('img');
+  img.src=url;
+
+  const btn=document.createElement('button');
+  btn.className='share-btn';
+  btn.innerText='Save Image 📲';
+  btn.onclick=()=>{
+    const a=document.createElement('a');
+    a.href=url; a.download='yes.png'; a.click();
+  };
+
+  box.appendChild(img);
+  box.appendChild(btn);
+}
+
+/* 🌌 Stars */
+const stars=document.getElementById('stars');
+for(let i=0;i<35;i++){
+  const s=document.createElement('div');
+  s.className='star';
+  s.style.left=Math.random()*100+'vw';
+  s.style.top=Math.random()*100+'vh';
+  s.style.animationDelay=Math.random()*3+'s';
+  stars.appendChild(s);
+}
+</script></body>
+</html>
